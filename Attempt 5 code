@@ -1,0 +1,16 @@
+from machine import Pin
+import utime
+pir_sensor =Pin(28, Pin.IN)
+led=Pin(15,Pin.OUT)
+
+while True:
+    if pir_sensor.value()==1:
+        for i in range(3):
+            print('Motion Detected. Put ur phone away and do ur homework')
+            led.toggle()
+            utime.sleep(1)#This is just so the light would only stay on for one second
+            led.toggle()
+            utime.sleep(25)#this was because the hardware was too sensitive.
+    else:
+        led.value(0)
+        
